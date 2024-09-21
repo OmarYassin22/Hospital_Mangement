@@ -1,7 +1,8 @@
 # Ignore build results
 bin/
 obj/
-debug/
+Debug/
+Models/obj
 
 # Ignore debug-specific files
 *.pdb
