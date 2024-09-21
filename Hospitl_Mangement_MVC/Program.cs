@@ -1,3 +1,6 @@
+using Hospitl_Mangement_MVC.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Hospitl_Mangement_MVC
 {
     public class Program
@@ -8,6 +11,13 @@ namespace Hospitl_Mangement_MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Load the connection string from appsettings.json
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            // Add the DbContext with the loaded connection string
+            builder.Services.AddDbContext<HospitalDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
