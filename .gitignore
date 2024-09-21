@@ -1,5 +1,31 @@
+# Ignore build results
+bin/
+obj/
+obj/Debug
+Debug/
+Models/obj
+
 # Visual Studio 2019
 .vs/
+# Ignore debug-specific files
+*.pdb
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+
+# Ignore Visual Studio Code workspace files
 .vscode/
-.Hospitl_Mangement_MVC/.vs/
-/Models/obj/Debug/net8.0/Models.AssemblyInfo.cs
+
+# Ignore Rider IDE files
+.idea/
+.idea_modules/
+
+# Ignore NuGet packages
+*.nupkg
+project.lock.json
+*.nuget.props
+
+# Ignore publish output
+publish/
