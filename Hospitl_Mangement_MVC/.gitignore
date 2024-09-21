@@ -1,6 +1,7 @@
 # Ignore build results
 bin/
 obj/
+debug/
 
 # Ignore debug-specific files
 *.pdb
