@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\DEPI\\Project\\Hospitl_Mangement_MVC\\Hospitl_Mangement_MVC.csproj",
+      "projectUniqueName": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Hospitl_Mangement_MVC\\Hospitl_Mangement_MVC.csproj",
       "projectName": "Hospitl_Mangement_MVC",
-      "projectPath": "D:\\projects\\DEPI\\Project\\Hospitl_Mangement_MVC\\Hospitl_Mangement_MVC.csproj",
+      "projectPath": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Hospitl_Mangement_MVC\\Hospitl_Mangement_MVC.csproj",
       "packagesPath": "C:\\Users\\Omar Y. Sleem\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\DEPI\\Project\\Hospitl_Mangement_MVC\\obj\\",
+      "outputPath": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Hospitl_Mangement_MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Omar Y. Sleem\\AppData\\Roaming\\NuGet\\NuGet.Config",

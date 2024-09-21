@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\DEPI\\Project\\Models\\Models.csproj": {}
+    "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Models\\Models.csproj": {}
   },
   "projects": {
-    "D:\\projects\\DEPI\\Project\\Models\\Models.csproj": {
+    "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\DEPI\\Project\\Models\\Models.csproj",
+        "projectUniqueName": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "D:\\projects\\DEPI\\Project\\Models\\Models.csproj",
+        "projectPath": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\Omar Y. Sleem\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\DEPI\\Project\\Models\\obj\\",
+        "outputPath": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Omar Y. Sleem\\AppData\\Roaming\\NuGet\\NuGet.Config",
