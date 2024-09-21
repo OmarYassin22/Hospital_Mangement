@@ -1,0 +1,27 @@
+# Ignore build results
+bin/
+obj/
+Debug/
+Models/obj
+
+# Ignore debug-specific files
+*.pdb
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore Visual Studio Code workspace files
+.vscode/
+
+# Ignore Rider IDE files
+.idea/
+.idea_modules/
+
+# Ignore NuGet packages
+*.nupkg
+project.lock.json
+*.nuget.props
+
+# Ignore publish output
+publish/
