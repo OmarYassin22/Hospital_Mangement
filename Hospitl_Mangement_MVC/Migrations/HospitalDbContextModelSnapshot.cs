@@ -62,7 +62,7 @@ namespace Hospitl_Mangement_MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctor");
+                    b.ToTable("Doctor", (string)null);
                 });
 
             modelBuilder.Entity("Hospitl_Mangement_MVC.Models.Patient", b =>
@@ -115,7 +115,7 @@ namespace Hospitl_Mangement_MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("Hospitl_Mangement_MVC.Models.Staff", b =>
@@ -159,7 +159,7 @@ namespace Hospitl_Mangement_MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staff");
+                    b.ToTable("Staff", (string)null);
                 });
 #pragma warning restore 612, 618
         }
