@@ -1,9 +1,10 @@
 ﻿using Hospitl_Mangement_MVC.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hospitl_Mangement_MVC.Data
 {
-    public class HospitalDbContext :DbContext
+    public class HospitalDbContext :IdentityDbContext<BaseEntity>
     {
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctor { get; set; }
