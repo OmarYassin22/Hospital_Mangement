@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Hospitl_Mangement_MVC.props" />
+</Project>

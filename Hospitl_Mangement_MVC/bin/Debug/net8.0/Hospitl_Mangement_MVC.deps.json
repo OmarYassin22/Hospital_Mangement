@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Hospitl_Mangement_MVC/1.0.0": {
+        "runtime": {
+          "Hospitl_Mangement_MVC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hospitl_Mangement_MVC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

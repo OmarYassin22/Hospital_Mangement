@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Hospitl_Mangement_MVC.props" />
+</Project>
