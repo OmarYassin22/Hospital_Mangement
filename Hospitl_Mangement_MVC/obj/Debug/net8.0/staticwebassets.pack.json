@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Hospitl_Mangement_MVC.bundle.scp.css"
     },
     {
+      "Id": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\Profile.jpg",
+      "PackagePath": "staticwebassets\\Images\\Profile.jpg"
+    },
+    {
       "Id": "D:\\projects\\DEPI\\Project\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
