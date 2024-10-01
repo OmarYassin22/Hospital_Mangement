@@ -147,8 +147,15 @@ namespace Hospitl_Mangement_MVC.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Describe")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int?>("DoctorId")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageURL")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Location")
                         .IsRequired()

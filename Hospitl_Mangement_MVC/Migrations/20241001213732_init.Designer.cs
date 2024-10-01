@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospitl_Mangement_MVC.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    [Migration("20241001212529_init4")]
-    partial class init4
+    [Migration("20241001213732_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,8 +150,15 @@ namespace Hospitl_Mangement_MVC.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Describe")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int?>("DoctorId")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageURL")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Location")
                         .IsRequired()
