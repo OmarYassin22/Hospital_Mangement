@@ -5,8 +5,6 @@ obj/Debug
 Debug/
 Models/obj
 
-# Visual Studio 2019
-.vs/
 # Ignore debug-specific files
 *.pdb
 *.user
