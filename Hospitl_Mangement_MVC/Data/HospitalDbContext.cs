@@ -11,6 +11,9 @@ namespace Hospitl_Mangement_MVC.Data
         public DbSet<Staff> Staff { get; set; }
         public DbSet<Department> Department { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<Medication> Medications { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
         public HospitalDbContext(DbContextOptions<HospitalDbContext> options) : base(options)
         {
         }
