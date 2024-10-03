@@ -24,10 +24,11 @@ namespace Hospitl_Mangement_MVC
             // Add the DbContext with the loaded connection string
             builder.Services.AddDbContext<HospitalDbContext>(options =>
                 options.UseSqlServer(connectionString));
-
+            builder.Services.AddIdentity<BaseEntity, IdentityRole>().AddEntityFrameworkStores<HospitalDbContext>()
+                .AddDefaultUI().AddDefaultTokenProviders();
             // Dependancy Injection
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositoy<>));
-
+            builder.Services.AddRazorPages();
 
             //builder.Services.AddIdentity<BaseEntity, IdentityRole>()
             //    .AddEntityFrameworkStores<HospitalDbContext>()
