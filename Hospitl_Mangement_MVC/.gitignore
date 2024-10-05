@@ -1,9 +1,12 @@
 # Ignore build results
+.vs/
 bin/
 obj/
 obj/Debug
 Debug/
 Models/obj
+
+
 
 # Ignore debug-specific files
 *.pdb
