@@ -1,4 +1,5 @@
-﻿using Hospitl_Mangement_MVC.Models;
+﻿using Hospitl_Mangement_MVC.Data;
+using Hospitl_Mangement_MVC.Models;
 
 namespace Hospitl_Mangement_MVC.Interface
 {
