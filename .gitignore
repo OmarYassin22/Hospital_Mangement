@@ -1,12 +1,14 @@
 # Ignore build results
+.vs/Hospital_Mangement
 bin/
 obj/
 obj/Debug
 Debug/
 Models/obj
 
+
 # Visual Studio 2019
-.vs/
+*.vs
 # Ignore debug-specific files
 *.pdb
 *.user

@@ -452,10 +452,12 @@ namespace Hospitl_Mangement_MVC.Migrations
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Staffs", (string)null);
                 });
@@ -588,7 +590,13 @@ namespace Hospitl_Mangement_MVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
                     b.Navigation("Department");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Hospitl_Mangement_MVC.Models.Department", b =>

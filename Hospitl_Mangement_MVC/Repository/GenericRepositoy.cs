@@ -4,7 +4,7 @@ using Hospitl_Mangement_MVC.Models;
 
 namespace Hospitl_Mangement_MVC.Repository
 {
-    public class GenericRepositoy<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepositoy<T> : IGenericRepository<T> where T : class
     {
         private readonly HospitalDbContext _context;
 
@@ -28,7 +28,7 @@ namespace Hospitl_Mangement_MVC.Repository
             _context.Dispose();
         }
 
-        public IEnumerable<T> GetAll()
+        public List<T> GetAll()
       => _context.Set<T>().ToList();
 
         public T GetById(int id)

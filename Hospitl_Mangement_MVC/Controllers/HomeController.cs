@@ -1,3 +1,4 @@
+using Hospitl_Mangement_MVC.Interface;
 using Hospitl_Mangement_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
