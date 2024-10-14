@@ -53,10 +53,6 @@
       "PackagePath": "staticwebassets\\Images\\doctors\\doctors-4.jpg"
     },
     {
-      "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\favicon.png",
-      "PackagePath": "staticwebassets\\Images\\favicon.png"
-    },
-    {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\gallery\\gallery-1.jpg",
       "PackagePath": "staticwebassets\\Images\\gallery\\gallery-1.jpg"
     },
@@ -89,8 +85,16 @@
       "PackagePath": "staticwebassets\\Images\\gallery\\gallery-8.jpg"
     },
     {
+      "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\healthcare.png",
+      "PackagePath": "staticwebassets\\Images\\healthcare.png"
+    },
+    {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\hero-bg.jpg",
       "PackagePath": "staticwebassets\\Images\\hero-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\log-out.png",
+      "PackagePath": "staticwebassets\\Images\\log-out.png"
     },
     {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\logo.png",
@@ -117,16 +121,16 @@
       "PackagePath": "staticwebassets\\Images\\testimonials\\testimonials-5.jpg"
     },
     {
+      "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\Images\\user.png",
+      "PackagePath": "staticwebassets\\Images\\user.png"
+    },
+    {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\css\\main.css",
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
-      "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
       "Id": "C:\\Users\\khale\\Source\\Repos\\Hospital_Mangement\\Hospitl_Mangement_MVC\\wwwroot\\forms\\Readme.txt",
