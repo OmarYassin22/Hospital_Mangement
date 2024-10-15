@@ -1,10 +1,12 @@
 ﻿using Hospitl_Mangement_MVC.Data;
 using Hospitl_Mangement_MVC.Interface;
 using Hospitl_Mangement_MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hospitl_Mangement_MVC.Controllers
 {
+    [Authorize(Roles = "Nurse")]
     public class NurseController : Controller
     {
         public NurseController(IGenericRepository<Medication> repository)
