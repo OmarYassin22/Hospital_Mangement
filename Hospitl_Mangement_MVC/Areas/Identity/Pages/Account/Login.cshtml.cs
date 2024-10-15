@@ -16,6 +16,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
 {
@@ -23,10 +27,13 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<BaseEntity> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<BaseEntity> _userManager; // Add UserManager to get user roles
 
-        public LoginModel(SignInManager<BaseEntity> signInManager, ILogger<LoginModel> logger)
+
+        public LoginModel(SignInManager<BaseEntity> signInManager, UserManager<BaseEntity> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager; // Initialize UserManager
             _logger = logger;
         }
 
@@ -102,6 +109,34 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
+        private string GenerateJwtToken(IdentityUser user, IList<string> roles)
+        {
+            var claims = new List<Claim>
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.Name, user.UserName)
+    };
+
+            // Add roles as claims
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKeyHere"));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: "yourdomain.com",
+                audience: "yourdomain.com",
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
@@ -116,9 +151,19 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
                 var username = new EmailAddressAttribute().IsValid(Input.Email) ? new MailAddress(Input.Email).User : Input.Email;
 
                 var result = await _signInManager.PasswordSignInAsync(username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
+                    
                     _logger.LogInformation("User logged in.");
+                    // Retrieve the user object
+                    var user = await _userManager.FindByNameAsync(username);
+
+                    // Get the user roles
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var token = GenerateJwtToken(user, roles);
+
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

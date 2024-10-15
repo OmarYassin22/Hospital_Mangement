@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Identity;
 using Hospitl_Mangement_MVC.Models;
 using Hospitl_Mangement_MVC.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Hospitl_Mangement_MVC
 {
@@ -24,6 +27,21 @@ namespace Hospitl_Mangement_MVC
             // Add the DbContext with the loaded connection string
             builder.Services.AddDbContext<HospitalDbContext>(options =>
                 options.UseSqlServer(connectionString));
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "yourdomain.com",
+                        ValidAudience = "yourdomain.com",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKeyHere"))
+                    };
+                });
+
 
             builder.Services.AddIdentity<BaseEntity, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).
                 AddEntityFrameworkStores<HospitalDbContext>()
