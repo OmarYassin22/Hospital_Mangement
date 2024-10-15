@@ -17,8 +17,17 @@ namespace Hospitl_Mangement_MVC.Controllers
         [HttpGet]
         public ActionResult MakeAppointment()
         {
-            // You might want to load available doctors, departments, etc.
-            ViewBag.Doctor = _context.Doctor.ToList();
+            var doctors = _context.Doctor.ToList();
+
+            if (doctors == null || !doctors.Any())
+            {
+                ViewBag.Doctor = new List<Doctor>();  // تهيئة بقيمة فارغة لتجنب null
+            }
+            else
+            {
+                ViewBag.Doctor = doctors;
+            }
+
             return View();
         }
 
