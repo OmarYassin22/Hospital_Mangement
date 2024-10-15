@@ -52,7 +52,27 @@
 
                 <nav id="navmenu" class="navmenu">
                     <ul>
-                        <li><a href="#hero" class="active">Home<br></a></li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <!-- Staff Management Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="staffDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Staff Management
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="staffDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="CreateNurse">Create Nurse</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="ViewAll">View All Staff</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#departments">Departments</a></li>
@@ -177,6 +197,24 @@
     <script src="/js/main.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Add your JWT logic here -->
+    <script>
+        // Get JWT token from storage
+        const token = localStorage.getItem("jwt_token");
+
+        // Decode token to check roles (using a library like jwt-decode)
+        const decodedToken = jwt_decode(token);
+
+        // Check if user is an Admin
+        if (decodedToken && decodedToken.role.includes("Admin")) {
+            // Display Staff Management menu
+            document.getElementById("staffManagementMenu").style.display = "block";
+        } else {
+            // Hide Staff Management menu
+            document.getElementById("staffManagementMenu").style.display = "none";
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

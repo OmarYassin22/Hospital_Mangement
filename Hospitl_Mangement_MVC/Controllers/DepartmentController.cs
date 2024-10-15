@@ -14,9 +14,10 @@ namespace Hospitl_Mangement_MVC.Controllers
             _context = context;
         }
 
-        // GET: Doctor/Create
+        // GET: Doctor/Create edit it 
         public IActionResult Create()
         {
+            ViewBag.DepartmentId = new SelectList(_context.Department, "Id", "DepartmentName");
             return View();
         }
 
