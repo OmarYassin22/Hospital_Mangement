@@ -8,15 +8,20 @@ namespace Hospitl_Mangement_MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IGenericRepository<Department> _department;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGenericRepository<Department> department)
         {
             _logger = logger;
+            _department = department;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+            var departments = _department.GetAll();//select * from department >>> pass to view
+            return View(departments);
+
         }
 
         public IActionResult Privacy()

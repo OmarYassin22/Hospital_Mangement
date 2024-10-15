@@ -1,9 +1,4 @@
-﻿@inject IGenericRepository<Department> departments;
-@{
-
-
-    var depts = departments.GetAll();
-}
+﻿@model List<Department>
 <section id="hero" class="hero section light-background">
 
     <img src="/Images/hero-bg.jpg" alt="" data-aos="fade-in">
@@ -323,7 +318,7 @@
             <div class="col-lg-3">
                 <ul class="nav nav-tabs flex-column">
 
-                    @foreach (var dept in departments.GetAll())
+                    @foreach (var dept in Model)
                     {
 
 
@@ -359,8 +354,8 @@
 
                         <div class="row">
                             <div class="col-lg-8 details order-2 order-lg-1">
-                                <h3>@departments.GetById(1).DepartmentName</h3>
-                                <p class="fst-italic">@departments.GetById(1).DepartmentName</p>
+                                <h3>@Model.Where(x => x.Id == 1).FirstOrDefault()?.DepartmentName</h3>
+                                <p class="fst-italic">@Model.Where(x => x.Id == 1).FirstOrDefault()?.DepartmentName</p>
                                 @* <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p> *@
                             </div>
                             <div class="col-lg-4 text-center order-1 order-lg-2">
@@ -369,7 +364,7 @@
                         </div>
                     </div>
 
-                    @foreach (var dept in departments.GetAll())
+                    @foreach (var dept in Model)
                     {
                         <div class="tab-pane" id="@dept.Id">
 
@@ -923,3 +918,4 @@
 
 <!-- /Contact Section -->
     </div>
+
