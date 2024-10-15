@@ -1,0 +1,24 @@
+﻿@model Hospitl_Mangement_MVC.Models.Appointment
+
+@{
+    ViewBag.Title = "Make Appointment";
+}
+
+<h2>Make an Appointment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DoctorId)
+        @Html.DropDownListFor(model => model.DoctorId, new SelectList(ViewBag.Doctors, "DoctorId", "DoctorName"), "Select Doctor", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AppointmentDate)
+        @Html.TextBoxFor(model => model.AppointmentDate, new { @class = "form-control", type = "date" })
+    </div>
+
+    <input type="submit" value="Make Appointment" class="btn btn-primary" />
+}
