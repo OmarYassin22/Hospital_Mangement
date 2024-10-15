@@ -35,6 +35,11 @@ namespace Hospitl_Mangement_MVC.Controllers
             ViewData["RoleId"] = new SelectList(_context.Roles.Where(x => x.Name != "Doctor" && x.Name != "Patient"), "Id", "Name", staff.RoleId);
             return View(staff);
         }
+        // POST: Staff/CreateNurse
+        
+        public async Task<IActionResult> ViewAll()
+        {            return View();
+        }
     }
 
 }
