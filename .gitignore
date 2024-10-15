@@ -32,3 +32,4 @@ project.lock.json
 # Ignore publish output
 publish/
 /Hospitl_Mangement_MVC/bin/Debug/net8.0/Hospitl_Mangement_MVC.dll
+/Hospitl_Mangement_MVC/bin/Debug/net8.0/Hospitl_Mangement_MVC.dll
