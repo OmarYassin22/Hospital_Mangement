@@ -47,7 +47,7 @@ namespace Hospitl_Mangement_MVC.Controllers
             return View(medicine);
 
         }
-        [HttpPost]
+        [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateMedicine(Medication medication)
         {
@@ -67,7 +67,7 @@ namespace Hospitl_Mangement_MVC.Controllers
             }
             return View(medicine);
         }
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteMedicine(int id)
         {

@@ -20,7 +20,9 @@ namespace Hospitl_Mangement_MVC.Repository
 
         public void Delete(int id)
         {
-            _context.Remove(id);
+            var item = _context.Set<T>().Find(id);
+            _context.Remove(item);
+            _context.SaveChanges();
         }
 
         public void Dispose()
