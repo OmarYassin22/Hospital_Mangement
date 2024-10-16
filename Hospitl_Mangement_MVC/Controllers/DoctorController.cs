@@ -26,7 +26,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         // POST: Doctor/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Speciatly,DepartmentId,TreatmentId,First_Name,Last_Name,ProfilePicture")] Doctor doctor)
+        public async Task<IActionResult> Create([Bind("Speciatly,DepartmentId,TreatmentId,First_Name,Last_Name")] Doctor doctor)
         {
             if (ModelState.IsValid)
             {

@@ -161,7 +161,7 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
 
                     // Get the user roles
                     var roles = await _userManager.GetRolesAsync(user);
-                    var token = GenerateJwtToken(user, roles);
+                    //var token = GenerateJwtToken(user, roles);
 
 
                     return LocalRedirect(returnUrl);

@@ -30,8 +30,12 @@ namespace Hospitl_Mangement_MVC.Controllers
             {
                 _context.Add(department);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ViewAll));
             }
+            return View();
+        }
+        public async Task<IActionResult> ViewAll()
+        {
             return View();
         }
     }

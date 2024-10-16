@@ -24,15 +24,15 @@ namespace Hospitl_Mangement_MVC.Controllers
         // POST: Staff/CreateNurse
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateNurse([Bind("First_Name,Last_Name,RoleId,ProfilePicture")] Staff staff)
+        public async Task<IActionResult> CreateNurse([Bind("First_Name,Last_Name,RoleId")] Staff staff)
         {
             if (ModelState.IsValid )
             {
                 _context.Add(staff);
                 await _context.SaveChangesAsync();
-                return View();
+                return RedirectToAction(nameof(ViewAll));
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles.Where(x => x.Name != "Doctor" && x.Name != "Patient"), "Id", "Name", staff.RoleId);
+            //["RoleId"] = new SelectList(_context.Roles.Where(x => x.Name != "Doctor" && x.Name != "Patient"), "Id", "Name", staff.RoleId);
             return View(staff);
         }
         // POST: Staff/CreateNurse
