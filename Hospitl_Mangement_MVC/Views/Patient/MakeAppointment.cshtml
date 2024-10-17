@@ -5,20 +5,81 @@
 }
 
 <h2>Make an Appointment</h2>
+<!-- Section Make Appointment -->
+<!-- Section Appointment -->
+<div class="container" data-aos="fade-up" data-aos-delay="100">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <form action="Submit" method="post" role="form" class="php-email-form">
+        <div class="row">
+            <!-- Full Name Input -->
+            <div class="col-md-4 form-group">
+                <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Your Name" required="">
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DoctorId)
-        @Html.DropDownListFor(model => model.DoctorId, new SelectList(ViewBag.Doctors, "DoctorId", "DoctorName"), "Select Doctor", new { @class = "form-control" })
-    </div>
+            <!-- Email Input -->
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required="">
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AppointmentDate)
-        @Html.TextBoxFor(model => model.AppointmentDate, new { @class = "form-control", type = "date" })
-    </div>
+            <!-- Phone Number Input -->
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+                <input type="tel" name="phone" class="form-control" id="phone" placeholder="Your Phone" required="">
+            </div>
+        </div>
 
-    <input type="submit" value="Make Appointment" class="btn btn-primary" />
-}
+        <div class="row">
+            <!-- Appointment Date Input -->
+            <div class="col-md-4 form-group mt-3">
+                <input type="date" name="appointmentDate" class="form-control" id="appointmentDate" required="">
+            </div>
+
+            <!-- Service Type Selection -->
+            <div class="col-md-4 form-group mt-3">
+                <select name="service" id="service" class="form-select" required="">
+                    <option value="">Select Service</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="follow-up">Follow-up</option>
+                    <option value="emergency">Emergency</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Doctor Selection -->
+            <div class="col-md-4 form-group mt-3">
+                @if (ViewBag.Doctor != null && ViewBag.Doctor.Count > 0)
+                {
+                    <select name="doctorId" id="doctorId" class="form-select" required="">
+                        <option value="">Select Doctor</option>
+                        @foreach (var doctor in ViewBag.Doctor)
+                        {
+                            <option value="@doctor.Id">@doctor.First_Name @doctor.Last_Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <p class="text-danger">No doctors available at the moment. Please try again later.</p>
+                }
+            </div>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Additional Notes (Optional)"></textarea>
+        </div>
+
+        <!-- Submission Area -->
+        <div class="mt-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+            <div class="text-center">
+                <button type="submit">Submit Appointment Request</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<!-- /Section Appointment -->
+<!-- /Section Make Appointment -->

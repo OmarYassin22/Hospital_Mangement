@@ -14,34 +14,44 @@ namespace Hospitl_Mangement_MVC.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        // GET: Appointment
         public ActionResult MakeAppointment()
         {
-            var doctors = _context.Doctor.ToList();
-
-            if (doctors == null || !doctors.Any())
-            {
-                ViewBag.Doctor = new List<Doctor>();  // تهيئة بقيمة فارغة لتجنب null
-            }
-            else
-            {
-                ViewBag.Doctor = doctors;
-            }
+            // Simulate fetching available doctors from database or service
+            ViewBag.Doctor = _context.Doctor.ToList();
 
             return View();
         }
 
+        // POST: Appointment/Submit
         [HttpPost]
-        public ActionResult MakeAppointment(Appointment appointment)
+        public ActionResult Submit(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
-                _context.Appointments.Add(appointment);
+                _context.Add(appointment);
                 _context.SaveChanges();
-                return RedirectToAction("AppointmentConfirmation"); // Redirect after success
+
+                // Redirect or show success message
+                ViewBag.Message = "Your appointment request has been sent successfully.";
+                return RedirectToAction();
             }
-            return View(appointment);
+
+            // If invalid, reload the form with errors and available doctors
+            ViewBag.Doctor = _context.Doctor.ToList();
+            return View();
         }
+
+        private List<Doctor> GetDoctors()
+        {
+            // Simulated list of doctors, replace with actual database call
+            return new List<Doctor>
+            {
+
+            };
+        }
+        // GET: Prescription/SeePrescription
+      
 
         public ActionResult AppointmentConfirmation()
         {

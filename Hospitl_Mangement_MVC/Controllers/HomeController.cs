@@ -36,3 +36,4 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
     }
 }
+
