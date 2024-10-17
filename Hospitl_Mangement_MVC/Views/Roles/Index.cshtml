@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model List<IdentityRole>
+
+<h2>Available Roles</h2>
+
+<table class="table table-stripped table-hover">
+    <thead class="bg-primary text-white mt-3">
+        <tr>
+            <th>Role Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var role in Model)
+        {
+            <tr>
+                <td>@role</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<a asp-action="AssignRole">Assign Role To User</a>
