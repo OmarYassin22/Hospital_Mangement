@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hospitl_Mangement_MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f3d61ec903b70c969b1ffbd6a97135775a1fa25")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ace777422c4ee67948ab8725c4e3137dcf3fe190")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hospitl_Mangement_MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hospitl_Mangement_MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
