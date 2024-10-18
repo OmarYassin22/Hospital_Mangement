@@ -38,7 +38,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
         public async Task<IActionResult> ViewAll()
         {
-            return View();
+            return View(_context.Department.ToList());
         }
     }
 }

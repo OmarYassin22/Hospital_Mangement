@@ -64,14 +64,18 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="staffDropdown">
+
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Create">Create Doctor</a>
+                                    </li>
                                     <li>
                                         <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="CreateNurse">Create Nurse</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="ViewAll">View All Staff</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="ViewAll">View All Doctors</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Create">Create Doctor</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="ViewAll">View All Nurses</a>
                                     </li>
                                 </ul>
                             </li>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Doctor>
+
+@{
+    ViewData["Title"] = "All Staff Doctor";
+}
+
+<h2>All Staff Doctor</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Speciatly</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Doctor in Model)
+        {
+            <tr>
+                <td>@($"{Doctor.First_Name} {Doctor.Last_Name}")</td>
+                <td>@Doctor.Speciatly</td>
+                <td>@Doctor.Department?.DepartmentName</td>
+            </tr>
+        }
+    </tbody>
+</table>
