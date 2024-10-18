@@ -1,42 +1,45 @@
-﻿@model Hospitl_Mangement_MVC.Models.Appointment
-
-@{
+﻿@{
     ViewBag.Title = "Make Appointment";
 }
 
-<h2>Make an Appointment</h2>
-<!-- Section Make Appointment -->
-<!-- Section Appointment -->
+<h2 class="text-center my-4 fw-bold">Make an Appointment</h2>
+
 <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <!-- Display success message -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
-    <form action="Submit" method="post" role="form" class="php-email-form">
-        <div class="row">
-            <!-- Full Name Input -->
-            <div class="col-md-4 form-group">
-                <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Your Name" required="">
+    <!-- Appointment form -->
+    <form asp-action="Submit" class="p-5 bg-white shadow-lg rounded border-0">
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <label for="fullName" class="form-label fw-bold">Your Name</label>
+                <input type="text" name="fullName" class="form-control border-2" id="fullName" placeholder="Your Name" required>
             </div>
-
-            <!-- Email Input -->
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-                <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required="">
+            <div class="col-md-4">
+                <label for="email" class="form-label fw-bold">Your Email</label>
+                <input type="email" name="email" class="form-control border-2" id="email" placeholder="Your Email" required>
             </div>
-
-            <!-- Phone Number Input -->
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-                <input type="tel" name="phone" class="form-control" id="phone" placeholder="Your Phone" required="">
+            <div class="col-md-4">
+                <label for="phone" class="form-label fw-bold">Your Phone</label>
+                <input type="tel" name="phone" class="form-control border-2" id="phone" placeholder="Your Phone" required>
             </div>
         </div>
 
-        <div class="row">
-            <!-- Appointment Date Input -->
-            <div class="col-md-4 form-group mt-3">
-                <input type="date" name="appointmentDate" class="form-control" id="appointmentDate" required="">
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <label for="appointmentDate" class="form-label fw-bold">Appointment Date</label>
+                <input type="date" name="appointmentDate" class="form-control border-2" id="appointmentDate" required>
             </div>
-
-            <!-- Service Type Selection -->
-            <div class="col-md-4 form-group mt-3">
-                <select name="service" id="service" class="form-select" required="">
-                    <option value="">Select Service</option>
+            <div class="col-md-4">
+                <label for="Staute" class="form-label fw-bold">Appointment Type</label>
+                <select name="Staute" id="Staute" class="form-select border-2" required>
+                    <option value="" disabled selected>Select Appointment Type</option>
                     <option value="consultation">Consultation</option>
                     <option value="follow-up">Follow-up</option>
                     <option value="emergency">Emergency</option>
@@ -44,13 +47,13 @@
             </div>
         </div>
 
-        <div class="row">
-            <!-- Doctor Selection -->
-            <div class="col-md-4 form-group mt-3">
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <label for="doctorId" class="form-label fw-bold">Select Doctor</label>
                 @if (ViewBag.Doctor != null && ViewBag.Doctor.Count > 0)
                 {
-                    <select name="doctorId" id="doctorId" class="form-select" required="">
-                        <option value="">Select Doctor</option>
+                    <select name="doctorId" id="doctorId" class="form-select border-2" required>
+                        <option value="" disabled selected>Select Doctor</option>
                         @foreach (var doctor in ViewBag.Doctor)
                         {
                             <option value="@doctor.Id">@doctor.First_Name @doctor.Last_Name</option>
@@ -64,22 +67,18 @@
             </div>
         </div>
 
-        <!-- Additional Notes -->
-        <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Additional Notes (Optional)"></textarea>
+        <div class="mb-4">
+            <label for="message" class="form-label fw-bold">Reason</label>
+            <textarea class="form-control border-2" name="message" id="message" rows="1" placeholder="Reason" required></textarea>
         </div>
 
-        <!-- Submission Area -->
-        <div class="mt-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-            <div class="text-center">
-                <button type="submit">Submit Appointment Request</button>
-            </div>
+        <div class="mb-4">
+            <label for="additionalNotes" class="form-label fw-bold">Additional Notes (Optional)</label>
+            <textarea class="form-control border-2" name="additionalNotes" id="additionalNotes" rows="3" placeholder="Additional Notes"></textarea>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg px-5 py-2" style="background-color: blue; border-color: #4CAF50; transition: background-color 0.3s ease;">Submit Appointment Request</button>
         </div>
     </form>
-
 </div>
-<!-- /Section Appointment -->
-<!-- /Section Make Appointment -->

@@ -24,7 +24,7 @@
                     <td>@appointment.Reason</td>
                     <td>
                         <!-- Link to create a prescription -->
-                        <a href="@Url.Action("CreatePrescription", "Doctors", new { appointmentId = appointment.AppointmentId })" class="btn btn-warning">Create Prescription</a>
+                        <a href="@Url.Action("CreatePrescription", "Prescription", new { appointmentId = appointment.AppointmentId })" class="btn btn-warning">Create Prescription</a>
                     </td>
                 </tr>
             }

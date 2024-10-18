@@ -24,11 +24,11 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
 
         // GET: Display form for creating a prescription
-        public IActionResult CreatePrescription(int treatmentId)
+        public IActionResult CreatePrescription()
         {
             var viewModel = new CreatePrescriptionViewModel
             {
-                TreatmentId = treatmentId,  // Pre-populate the treatmentId
+                //TreatmentId = treatmentId,  // Pre-populate the treatmentId
                 Treatments = _treatmentRepository.GetAll().Select(t => new SelectListItem
                 {
                     Value = t.TreatmentId.ToString(),
