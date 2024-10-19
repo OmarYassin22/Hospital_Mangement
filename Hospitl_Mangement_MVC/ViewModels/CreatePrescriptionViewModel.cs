@@ -5,19 +5,19 @@ namespace Hospitl_Mangement_MVC.ViewModels
 {
     public class CreatePrescriptionViewModel
     {
-        public int AppointmentId { get; set; } // Add this line to include AppointmentId
+        public int? AppointmentId { get; set; } // Add this line to include AppointmentId
 
-        [Required]
-        public int TreatmentId { get; set; }
+        //[Required]
+        public int? TreatmentId { get; set; }
 
-        [Required]
-        public int MedicationId { get; set; }
+        //[Required]
+        public int? MedicationId { get; set; }
 
-        [Required]
-        public int Quantity { get; set; }
+        //[Required]
+        public int? Quantity { get; set; }
 
-        [Required]
-        public int Duration { get; set; }
+        //[Required]
+        public int? Duration { get; set; }
 
         public IEnumerable<SelectListItem> Treatments { get; set; }
         public IEnumerable<SelectListItem> Medications { get; set; }

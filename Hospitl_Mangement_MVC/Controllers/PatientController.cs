@@ -47,12 +47,15 @@ namespace Hospitl_Mangement_MVC.Controllers
             {
                 // Get the currently logged-in user
                 var user = await _userManager.GetUserAsync(User);
+                var DbUser = _userManager.FindByNameAsync(User.Identity.Name).Result;
+                appointment.PatientId = DbUser.Id;
+                //appointment.Patient = DbUser as Patient;
 
                 // If you want to associate the appointment with the logged-in user
                 //appointment.PatientId = user?.Id; // Assuming Appointment has a PatientId property
 
                 // Add the appointment to the database
-                _context.Add(appointment);
+                _context.Appointments.Add(appointment);
                 await _context.SaveChangesAsync(); // Save changes asynchronously
 
                 // Dynamically send an email to the logged-in user's email address

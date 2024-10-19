@@ -51,7 +51,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         public IActionResult CreatePrescription(CreatePrescriptionViewModel model)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 var prescription = new Prescription
                 {
                     TreatmentID = model.TreatmentId,

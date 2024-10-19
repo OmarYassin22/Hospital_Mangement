@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
+using Hospitl_Mangement_MVC.Data;
 
 namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
 {
@@ -31,13 +32,15 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<BaseEntity> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly HospitalDbContext _context;
 
         public RegisterModel(
             UserManager<BaseEntity> userManager,
             IUserStore<BaseEntity> userStore,
             SignInManager<BaseEntity> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+       HospitalDbContext context)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,6 +48,7 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -123,13 +127,15 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var username = new EmailAddressAttribute().IsValid(Input.Email)? new MailAddress(Input.Email).User : Input.Email;
-                var user = new BaseEntity
+                var username = new EmailAddressAttribute().IsValid(Input.Email) ? new MailAddress(Input.Email).User : Input.Email;
+                var user = new Patient
                 {
                     First_Name = Input.FirstName,
                     Last_Name = Input.LastName,
                     UserName = username,
-                    Email = Input.Email
+                    Email = Input.Email,
+                    Address = "test",
+                    
                 };
 
                 await _userStore.SetUserNameAsync(user, username, CancellationToken.None);
@@ -151,6 +157,7 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //_context.SaveChanges();
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -159,6 +166,9 @@ namespace Hospitl_Mangement_MVC.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        //_context.Patients.Add(new Patient { Id = user.Id, First_Name = Input.FirstName, Last_Name = Input.LastName });
+                        //_context.SaveChanges();
                         return LocalRedirect(returnUrl);
                     }
                 }

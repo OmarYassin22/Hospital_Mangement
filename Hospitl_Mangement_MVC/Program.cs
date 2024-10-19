@@ -27,7 +27,7 @@ namespace Hospitl_Mangement_MVC
 
             // Add the DbContext with the loaded connection string
             builder.Services.AddDbContext<HospitalDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString), ServiceLifetime.Transient);
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

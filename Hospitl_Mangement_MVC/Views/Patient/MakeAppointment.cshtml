@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Make Appointment";
 }
+@model Appointment
 
 <h2 class="text-center my-4 fw-bold">Make an Appointment</h2>
 
@@ -15,21 +16,23 @@
     }
 
     <!-- Appointment form -->
-    <form asp-action="Submit" class="p-5 bg-white shadow-lg rounded border-0">
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
-                <label for="fullName" class="form-label fw-bold">Your Name</label>
-                <input type="text" name="fullName" class="form-control border-2" id="fullName" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-4">
-                <label for="email" class="form-label fw-bold">Your Email</label>
-                <input type="email" name="email" class="form-control border-2" id="email" placeholder="Your Email" required>
-            </div>
-            <div class="col-md-4">
-                <label for="phone" class="form-label fw-bold">Your Phone</label>
-                <input type="tel" name="phone" class="form-control border-2" id="phone" placeholder="Your Phone" required>
-            </div>
+    <form asp-action="Submit" class="p-5 bg-white shadow-lg roun    ded border-0">
+        <p>@User.Identity.Name</p>
+        <input asp-for="Patient" type="text" value="@User.Identity.Name"  />
+        @*          <div class="row g-4 mb-4">
+        <div class="col-md-4">
+        <label for="fullName" class="form-label fw-bold">Your Name</label>
+        <input type="text" name="fullName" class="form-control border-2" id="fullName" placeholder="Your Name" required>
         </div>
+        <div class="col-md-4">
+        <label for="email" class="form-label fw-bold">Your Email</label>
+        <input type="email" name="email" class="form-control border-2" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="col-md-4">
+        <label for="phone" class="form-label fw-bold">Your Phone</label>
+        <input type="tel" name="phone" class="form-control border-2" id="phone" placeholder="Your Phone" required>
+        </div>
+        </div> *@
 
         <div class="row g-4 mb-4">
             <div class="col-md-4">

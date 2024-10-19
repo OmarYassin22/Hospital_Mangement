@@ -6,11 +6,11 @@
 
     public class BaseEntity : IdentityUser
     {
-        [Required, MaxLength(35)]
-        public string First_Name { get; set; }
+        [ MaxLength(35)]
+        public string? First_Name { get; set; }
 
-        [Required, MaxLength(35)]
-        public string Last_Name { get; set; }
+        [ MaxLength(35)]
+        public string? Last_Name { get; set; }
         public byte[]? ProfilePicture { get; set; }
     }
 

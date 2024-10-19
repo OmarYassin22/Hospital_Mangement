@@ -8,7 +8,7 @@
     <div class="form-group">
         <label asp-for="TreatmentId"></label>
         <select asp-for="TreatmentId" class="form-control">
-            @foreach (var treatment in Model.Treatments)
+            @foreach (var treatment in Model?.Treatments)
             {
                 <option value="@treatment.Value">@treatment.Text</option>
             }
