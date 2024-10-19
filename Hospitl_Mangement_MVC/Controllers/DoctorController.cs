@@ -29,7 +29,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Speciatly,DepartmentId,First_Name,Last_Name")] Doctor doctor)
         {
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(doctor);
                 await _context.SaveChangesAsync();
@@ -61,8 +61,87 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
         public IActionResult Viewall()
         {
-            return View(_context.Doctor.Include(x=>x.Department).ToList());
+            return View(_context.Doctor.Include(x => x.Department).ToList());
         }
+
+        // GET: Doctor/Edit/5
+        public async Task<IActionResult> Edit(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var doctor = await _context.Doctor.FindAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmentName", doctor.DepartmentId);
+            return View(doctor);
+        }
+        // POST: Doctor/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Speciatly,DepartmentId,First_Name,Last_Name")] Doctor doctor)
+        {
+            if (id != doctor.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var U_doctor = await _context.Doctor.FindAsync(id);
+                    U_doctor.Speciatly = doctor.Speciatly;
+                    U_doctor.First_Name = doctor.First_Name;
+                    U_doctor.Last_Name = doctor.Last_Name;
+                    U_doctor.DepartmentId = doctor.DepartmentId;
+                    _context.Update(U_doctor);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!DoctorExists(doctor.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Viewall));
+            }
+
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmentName", doctor.DepartmentId);
+            return RedirectToAction(nameof(Viewall));
+        }
+
+        // The missing DoctorExists method added here
+        private bool DoctorExists(string id)
+        {
+            return _context.Doctor.Any(e => e.Id == id);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var doctor = await _context.Doctor.FindAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+
+            _context.Doctor.Remove(doctor);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Viewall)); // Ensure this redirects to your list page
+        }
+
     }
 
 }

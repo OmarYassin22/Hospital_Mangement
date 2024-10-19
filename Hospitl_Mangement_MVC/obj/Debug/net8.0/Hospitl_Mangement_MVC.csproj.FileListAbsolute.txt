@@ -1462,6 +1462,7 @@ D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\ref\Hospi
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MailKit.dll
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MimeKit.dll
+<<<<<<< HEAD
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\appsettings.json
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\Hospitl_Mangement_MVC.staticwebassets.runtime.json
@@ -1755,3 +1756,8 @@ C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mange
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\obj\Debug\net8.0\Hospitl_Mangement_MVC.pdb
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\obj\Debug\net8.0\Hospitl_Mangement_MVC.genruntimeconfig.cache
 C:\Users\oysle\Desktop\My Files\DEPI\New folder\Hospital_Mangement\Hospitl_Mangement_MVC\obj\Debug\net8.0\ref\Hospitl_Mangement_MVC.dll
+=======
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MailKit.dll
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MimeKit.dll
+>>>>>>> bd8aa0c1217db4a9eb4c0ae2e03473b19a7a5f3c

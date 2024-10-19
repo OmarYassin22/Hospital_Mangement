@@ -24,20 +24,25 @@ namespace Hospitl_Mangement_MVC.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-
-            var users = _userManager.Users;
-            var roles = _roleManager.Roles.ToList();
-            var userDto =  users.Select(user => new UserViewModel
+            // Get all users
+            var users = await _userManager.Users.Select(user => new UserViewModel
             {
                 FirstName = user.First_Name,
                 LastName = user.Last_Name,
                 UserName = user.UserName,
-                Email = user.Email,
-                Roles = _userManager.GetRolesAsync(user).Result
-            }).ToListAsync().Result;
-            return View(userDto);
+                Email = user.Email
+            }).ToListAsync();
+
+            // Fetch roles for each user asynchronously
+            foreach (var user in users)
+            {
+                var appUser = await _userManager.FindByNameAsync(user.UserName);
+                user.Roles = await _userManager.GetRolesAsync(appUser);
+            }
+
+            return View(users);
         }
 
         public IActionResult AssignRole()
@@ -55,7 +60,7 @@ namespace Hospitl_Mangement_MVC.Controllers
             {
                 var role = _roleManager.FindByIdAsync(userRole.RoleId).Result;
                 var user = _userManager.FindByIdAsync(userRole.UserId).Result;
-                _userManager.AddToRoleAsync(user,role.Name);
+                _userManager.AddToRoleAsync(user, role.Name);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
