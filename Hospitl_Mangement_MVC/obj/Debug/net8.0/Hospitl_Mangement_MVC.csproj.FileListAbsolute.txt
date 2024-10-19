@@ -1462,3 +1462,6 @@ D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\ref\Hospi
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MailKit.dll
 C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MimeKit.dll
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MailKit.dll
+C:\Users\khale\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MimeKit.dll
