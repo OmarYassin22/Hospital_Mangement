@@ -1,6 +1,7 @@
 ﻿using Hospitl_Mangement_MVC.Data;
 using Hospitl_Mangement_MVC.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hospitl_Mangement_MVC.Controllers
@@ -29,6 +30,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(appointment);
                 _context.SaveChanges();
 
