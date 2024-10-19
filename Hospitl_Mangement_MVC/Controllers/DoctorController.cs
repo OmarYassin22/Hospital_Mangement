@@ -3,6 +3,7 @@ using Hospitl_Mangement_MVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hospitl_Mangement_MVC.Controllers
 {
@@ -26,16 +27,41 @@ namespace Hospitl_Mangement_MVC.Controllers
         // POST: Doctor/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Speciatly,DepartmentId,TreatmentId,First_Name,Last_Name")] Doctor doctor)
+        public async Task<IActionResult> Create([Bind("Speciatly,DepartmentId,First_Name,Last_Name")] Doctor doctor)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 _context.Add(doctor);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Viewall));
+            }
+            else
+            {
+                // Collect missing or invalid data fields
+                var errorMessages = ModelState.Where(ms => ms.Value.Errors.Count > 0)
+                                              .Select(ms => ms.Key) // Get the field names
+                                              .ToList();
+
+                // Create a message for the missing or invalid fields
+                string missingDataMessage = "The following fields have errors or missing data: " + string.Join(", ", errorMessages);
+
+                // Add the message to the ModelState, so it can be displayed
+                ModelState.AddModelError(string.Empty, missingDataMessage);
+
+                // Re-populate the Department dropdown in case of validation errors
+                ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmentName", doctor.DepartmentId);
+
+                // Return the view with validation errors and input data
+                return View(doctor);
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "Id", "DepartmentName", doctor.DepartmentId);
-            return View(doctor);
+            return RedirectToAction(nameof(Viewall));
+            //return View(doctor);
+
+        }
+        public IActionResult Viewall()
+        {
+            return View(_context.Doctor.Include(x=>x.Department).ToList());
         }
     }
 

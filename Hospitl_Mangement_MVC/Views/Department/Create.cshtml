@@ -1,5 +1,8 @@
 ﻿@model Department
 
+@{
+    ViewData["RoleId"] = "Create Department";
+}
 
 @if (User.IsInRole("Admin"))
 {

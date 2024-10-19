@@ -8,6 +8,5 @@ namespace Hospitl_Mangement_MVC.Models
         public int? DepartmentId { get; set; }
         public Department? Department { get; set; }
         public ICollection<Appointment>? Appointment { get; set; }
-        public IEnumerable<Treatment> Treatment { get; set; }
     }
 }

@@ -64,14 +64,18 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="staffDropdown">
+
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Create">Create Doctor</a>
+                                    </li>
                                     <li>
                                         <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="CreateNurse">Create Nurse</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="ViewAll">View All Staff</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="ViewAll">View All Doctors</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Create">Create Doctor</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Staff" asp-action="ViewAll">View All Nurses</a>
                                     </li>
                                 </ul>
                             </li>
@@ -82,6 +86,11 @@
                             <li>
                                 <a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="MakeAppointment">Make Appointment</a>
                             </li>
+
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="ViewPrescription">ViewPrescription</a>
+                            </li>
+
                          }
 
                         <li><a href="#about">About</a></li>
@@ -107,7 +116,8 @@
                             </li>
                         }
                         <li><a asp-controller="Nurse" asp-action="GetAllMedicines">Medicine</a></li>
-                        <li><a href="#doctors">Doctors</a></li>
+                        <li><a asp-controller="Doctors" asp-action="AllDoctors">Doctors</a></li>
+                        @* <li><a href="#doctors">Doctors</a></li> *@
                         <li><a href="#contact">Contact</a></li>
                         @if (User.IsInRole("Admin"))
                         {

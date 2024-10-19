@@ -1,1 +1,25 @@
-﻿<h1>All Departments</h1>
+﻿@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = "All Department";
+}
+
+<h2>All Department</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>DepartmentName </th>
+           <th>Location </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Doctor in Model)
+        {
+            <tr>
+                <td>@Doctor.DepartmentName </td>
+                    <td>@Doctor.Location </td>
+            </tr>
+        }
+    </tbody>
+</table>

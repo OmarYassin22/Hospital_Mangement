@@ -1,1 +1,25 @@
-﻿<h1>All Staff</h1>
+﻿@model IEnumerable<Staff>
+
+@{
+    ViewData["Title"] = "All Staff Nurse";
+}
+
+<h2>All Staff Nurse</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var staff in Model)
+        {
+            <tr>
+                <td>@($"{staff.First_Name} {staff.Last_Name}")</td>
+                <td>@staff.Role?.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

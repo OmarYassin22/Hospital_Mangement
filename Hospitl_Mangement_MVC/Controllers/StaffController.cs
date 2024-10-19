@@ -2,6 +2,7 @@
 using Hospitl_Mangement_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hospitl_Mangement_MVC.Controllers
 {
@@ -24,7 +25,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         // POST: Staff/CreateNurse
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateNurse([Bind("First_Name,Last_Name,RoleId")] Staff staff)
+        public async Task<IActionResult> CreateNurse([Bind("First_Name,Last_Name")] Staff staff)
         {
             if (ModelState.IsValid )
             {
@@ -36,9 +37,11 @@ namespace Hospitl_Mangement_MVC.Controllers
             return View(staff);
         }
         // POST: Staff/CreateNurse
-        
-        public async Task<IActionResult> ViewAll()
-        {            return View();
+
+        // Action to display all staff members
+       public IActionResult ViewAll()
+        {
+            return View(_context.Staff.Include(x=>x.Role).ToList());
         }
     }
 
