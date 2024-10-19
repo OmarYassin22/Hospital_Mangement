@@ -4,6 +4,7 @@ using Hospitl_Mangement_MVC.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hospitl_Mangement_MVC.Controllers
 {
@@ -11,20 +12,30 @@ namespace Hospitl_Mangement_MVC.Controllers
     public class RolesController : Controller
     {
         private readonly SignInManager<BaseEntity> _signInManager;
+        private readonly UserManager<BaseEntity> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly HospitalDbContext _context;
 
-        public RolesController(SignInManager<BaseEntity> signInManager, RoleManager<IdentityRole> roleManager, HospitalDbContext context)
+        public RolesController(SignInManager<BaseEntity> signInManager, RoleManager<IdentityRole> roleManager, HospitalDbContext context, UserManager<BaseEntity> userManager)
         {
             _signInManager = signInManager;
             _roleManager = roleManager;
             _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var roles = _roleManager.Roles.ToList();
-            return View(roles);
+            var users = await _userManager.Users.Select(user => new UserViewModel
+            {
+                FirstName = user.First_Name,
+                LastName = user.Last_Name,
+                UserName = user.UserName,
+                Email = user.Email,
+                Roles = _userManager.GetRolesAsync(user).Result
+            }).ToListAsync();
+
+            return View(users);
         }
         public IActionResult AssignRole()
         {
@@ -35,7 +46,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AssignRole([Bind("UserId", "RoleId")]UserRole userRole)
+        public IActionResult AssignRole([Bind("UserId", "RoleId")] UserRole userRole)
         {
             if (ModelState.IsValid)
             {
