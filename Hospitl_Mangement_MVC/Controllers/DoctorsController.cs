@@ -1,4 +1,5 @@
-﻿using Hospitl_Mangement_MVC.Interface;
+﻿using Hospitl_Mangement_MVC.Data;
+using Hospitl_Mangement_MVC.Interface;
 using Hospitl_Mangement_MVC.Models;
 using Hospitl_Mangement_MVC.ViewModels; // Import the ViewModel namespace
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         private readonly IGenericRepository<Treatment> _treatmentRepository; // Add Treatment Repository
         private readonly IGenericRepository<Medication> _medicationRepository; // Add Medication Repository
         private readonly IGenericRepository<Prescription> _prescriptionRepository; // Add Prescription Repository
+        private readonly HospitalDbContext context;
 
         public DoctorsController(
             IGenericRepository<Doctor> doctorRepository,
@@ -23,7 +25,8 @@ namespace Hospitl_Mangement_MVC.Controllers
             IGenericRepository<Patient> patientRepository,
             IGenericRepository<Treatment> treatmentRepository, // Add Treatment Repository
             IGenericRepository<Medication> medicationRepository, // Add Medication Repository
-            IGenericRepository<Prescription> prescriptionRepository) // Add Prescription Repository
+            IGenericRepository<Prescription> prescriptionRepository,
+            HospitalDbContext context )  // Add Prescription Repository
         {
             _doctorRepository = doctorRepository;
             _appointmentRepository = appointmentRepository;
@@ -31,6 +34,7 @@ namespace Hospitl_Mangement_MVC.Controllers
             _treatmentRepository = treatmentRepository; // Assign the Treatment Repository
             _medicationRepository = medicationRepository; // Assign the Medication Repository
             _prescriptionRepository = prescriptionRepository; // Assign the Prescription Repository
+            this.context = context;
         }
 
         // Action: List all doctors

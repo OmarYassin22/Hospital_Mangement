@@ -44,23 +44,31 @@ namespace Hospitl_Mangement_MVC.Controllers
 
             return View(users);
         }
-
-        public IActionResult AssignRole()
+        [HttpGet("AssignRole/{email}")]
+        public IActionResult AssignRole(string email)
         {
-            var userRole = new UserRole();
-            ViewBag.Users = _signInManager.UserManager.Users.ToList();
+            var userRole = new UserRole()
+            {
+                email = email
+            };
+            ViewBag.Users = email;
             ViewBag.Roles = _roleManager.Roles.ToList();
             return View(userRole);
         }
-        [HttpPost]
+        [HttpPost("AssignRole/{email}")]
         [ValidateAntiForgeryToken]
-        public IActionResult AssignRole([Bind("UserId", "RoleId")] UserRole userRole)
+        public IActionResult AssignRole( UserRole userRole)
         {
             if (ModelState.IsValid)
             {
                 var role = _roleManager.FindByIdAsync(userRole.RoleId).Result;
-                var user = _userManager.FindByIdAsync(userRole.UserId).Result;
-                _userManager.AddToRoleAsync(user, role.Name);
+                var user = _userManager.FindByEmailAsync(userRole.email).Result;
+                foreach (var r in _roleManager.Roles)
+                {
+
+                    var temp = _userManager.RemoveFromRoleAsync(user, r.Name).Result;
+                }
+                    var result = _userManager.AddToRoleAsync(user, role.Name).Result;
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
