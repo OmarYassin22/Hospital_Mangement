@@ -10,7 +10,7 @@ namespace Hospitl_Mangement_MVC.Services
         {
             var fromEmail = "healthforusy@outlook.com";
             var fromPassword = "MohamedSaad500500%";
-            
+
             var message = new MailMessage();
             message.From = new MailAddress(fromEmail);
             message.To.Add(email);

@@ -1,11 +1,11 @@
-﻿
-using Hospitl_Mangement_MVC.Data;
+﻿using Hospitl_Mangement_MVC.Data;
 using Hospitl_Mangement_MVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Services;
 using System.Net.Mail;
 
 namespace Hospitl_Mangement_MVC.Controllers
@@ -14,17 +14,19 @@ namespace Hospitl_Mangement_MVC.Controllers
     public class PatientController : Controller
     {
         private readonly HospitalDbContext _context;
-        private readonly UserManager<BaseEntity>_userManager ;
+        private readonly UserManager<BaseEntity> _userManager;
+        private readonly EmailService _emailService;
 
 
         public IActionResult Index()
         {
             return View();
         }
-        public PatientController(HospitalDbContext context, UserManager<BaseEntity> userManager)
+        public PatientController(HospitalDbContext context, UserManager<BaseEntity> userManager, EmailService emailService)
         {
             _context = context;
-            _userManager = userManager; 
+            _userManager = userManager;
+            _emailService = emailService;
         }
 
         // GET: Appointment
@@ -38,28 +40,43 @@ namespace Hospitl_Mangement_MVC.Controllers
 
         // POST: Appointment/Submit
         [HttpPost]
-        public async Task <IActionResult> Submit(Appointment appointment)
+        public async Task<IActionResult> Submit(Appointment appointment)
         {
+            // Check if the model is valid
             if (ModelState.IsValid)
             {
-<<<<<<< HEAD
+                // Get the currently logged-in user
+                var user = await _userManager.GetUserAsync(User);
 
-=======
-                //var user= await _userManager.GetUserAsync(User);
-                //appointment.PatientId = user?.Id;
->>>>>>> ec0629009a2b9e2d80efe2095b7a501b75c838ff
+                // If you want to associate the appointment with the logged-in user
+                //appointment.PatientId = user?.Id; // Assuming Appointment has a PatientId property
+
+                // Add the appointment to the database
                 _context.Add(appointment);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync(); // Save changes asynchronously
+
+                // Dynamically send an email to the logged-in user's email address
+                string recipientEmail = user?.Email; // Get the user's email from the user object
+                string emailSubject = "Confirm Appointment";
+                string emailBody = "Hello " + user?.First_Name + ", you have now successfully made an appointment";
+
+                // Send email to the user's email address
+                if (!string.IsNullOrEmpty(recipientEmail))
+                {
+                    await _emailService.SendEmailAsync(recipientEmail, emailSubject, emailBody);
+                }
 
                 // Store success message in TempData to display after redirection
                 TempData["SuccessMessage"] = "Your appointment request has been sent successfully.";
+
                 return RedirectToAction("MakeAppointment");
             }
 
-            // If invalid, reload the form with errors and available doctors
+            // If the model is invalid, reload the form with errors and available doctors
             ViewBag.Doctor = _context.Doctor.ToList();
             return View("MakeAppointment");
         }
+
 
 
         private List<Doctor> GetDoctors()

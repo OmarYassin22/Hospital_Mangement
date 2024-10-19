@@ -46,7 +46,7 @@ namespace Hospitl_Mangement_MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AssignRole([Bind("UserId", "RoleId")]UserRole userRole)
+        public IActionResult AssignRole([Bind("UserId", "RoleId")] UserRole userRole)
         {
             if (ModelState.IsValid)
             {

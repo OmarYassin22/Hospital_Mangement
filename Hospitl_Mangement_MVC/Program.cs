@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Services;
 
 namespace Hospitl_Mangement_MVC
 {
@@ -49,7 +50,8 @@ namespace Hospitl_Mangement_MVC
             // Dependancy Injection
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositoy<>));
 
-            
+            builder.Services.AddSingleton<EmailService>();
+
 
             var app = builder.Build();
 

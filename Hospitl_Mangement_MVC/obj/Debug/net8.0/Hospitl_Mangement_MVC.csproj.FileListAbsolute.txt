@@ -1459,3 +1459,6 @@ D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\refint\Ho
 D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\Hospitl_Mangement_MVC.pdb
 D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\Hospitl_Mangement_MVC.genruntimeconfig.cache
 D:\DEPI SoftSkils\final-project\Hospitl_Mangement_MVC\obj\Debug\net8.0\ref\Hospitl_Mangement_MVC.dll
+C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MailKit.dll
+C:\Users\user\Source\Repos\Hospital_Mangement\Hospitl_Mangement_MVC\bin\Debug\net8.0\MimeKit.dll
